@@ -9,4 +9,9 @@ body {
   letter-spacing: 0.5px;
 
   --broadcaster-bg: #fcd67f;
+  --mod-bg: #742b15;
+  --regular-bg: #372924;
+
+  --sub-sidebar: #f1c071;
+  --mod-sidebar: #392a23;
 }
