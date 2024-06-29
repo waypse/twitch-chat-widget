@@ -38,5 +38,6 @@
     width: 100vw;
     box-sizing: border-box;
     padding: 10px;
+    row-gap: 1.5rem;
   }
 </style>
