@@ -14,4 +14,10 @@ body {
 
   --sub-sidebar: #f1c071;
   --mod-sidebar: #392a23;
+
+  --broadcaster-text: #52341c;
+  --white-text: #fffffe;
+
+  --brown-border: #52341c;
+  --sub-border: #ffd780;  
 }

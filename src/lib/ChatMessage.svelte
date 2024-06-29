@@ -13,23 +13,23 @@
     const styles = {
       broadcaster: {
         "--message-bg": "var(--broadcaster-bg)",
-        "--message-color": "#4b2d15",
-        "--message-border": "#4b2d15",
+        "--message-color": "var(--broadcaster-text)",
+        "--message-border": "var(--brown-border)",
         "--message-image":
           "url('https://i.ibb.co/tKPDmYn/bg-star-broadcaster.png')",
         "--side-bar": "var(--mod-sidebar)",
       },
       mod: {
-        "--message-bg": "#742b15",
-        "--message-color": "#fffffe",
-        "--message-border": "#4b2d15",
+        "--message-bg": "var(--mod-bg)",
+        "--message-color": "var(--white-text)",
+        "--message-border": "var(--brown-border)",
         "--message-image": "url('https://i.ibb.co/4ZHJs0t/bg-star-mod.png')",
         "--side-bar": "var(--mod-sidebar)",
       },
       subscriber: {
-        "--message-bg": "#362823",
-        "--message-color": "#fffffe",
-        "--message-border": "#362823",
+        "--message-bg": "var(--regular-bg)",
+        "--message-color": "var(--white-text)",
+        "--message-border": "var(--sub-border)",
         "--message-image": "url('https://i.ibb.co/CmfxfJ2/bg-star.png')",
         "--side-bar": "var(--sub-sidebar)",
       },
