@@ -7,7 +7,7 @@
     const { listener, event } = obj.detail;
 
     if (listener === "message") {
-      $messages = [...$messages, event];
+      $messages = [event, ...$messages];
     }
 
     if (listener === "delete-message") {
@@ -36,5 +36,7 @@
     flex-direction: column-reverse;
     height: 100vh;
     width: 100vw;
+    box-sizing: border-box;
+    padding: 10px;
   }
 </style>

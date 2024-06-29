@@ -30,7 +30,7 @@
   </div>
   <div class="void" />
   <div class="message {data.tags['user-type']}">
-    <div>
+    <div class="text-box">
       {@html message.renderedText}
     </div>
   </div>
@@ -68,5 +68,34 @@
   .badges img {
     width: 20px;
     height: 20px;
+  }
+
+  .message {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .text-box {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #362823;
+    color: #fffffe;
+    border: 1px solid #362823;
+  }
+
+  .sub .text-box {
+    border-color: #f2c172 !important;
+  }
+
+  .broadcaster .text-box {
+    background-color: var(--broadcaster-bg) !important;
+    color: #4b2d15 !important;
+    border-color: #4b2d15 !important;
+  }
+
+  .mod .text-box {
+    background-color: #742b15 !important;
+    border-color: #4b2d15 !important;
   }
 </style>
