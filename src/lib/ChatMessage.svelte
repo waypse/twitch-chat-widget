@@ -3,6 +3,10 @@
 
   const data = message.data;
 
+  const filteredBadges = data.badges.filter((badge) =>
+    Object.keys(badgeUrls).includes(badge.type)
+  );
+
   const badgeUrls = {
     moderator: "https://i.ibb.co/Lt29fvf/mod.png",
     broadcaster: "https://i.ibb.co/qDY25Qv/streamer.png",
@@ -18,6 +22,7 @@
         "--message-image":
           "url('https://i.ibb.co/tKPDmYn/bg-star-broadcaster.png')",
         "--side-bar": "var(--mod-sidebar)",
+        "--star-image": "url('https://svgshare.com/i/17jt.svg')",
       },
       mod: {
         "--message-bg": "var(--mod-bg)",
@@ -25,6 +30,7 @@
         "--message-border": "var(--brown-border)",
         "--message-image": "url('https://i.ibb.co/4ZHJs0t/bg-star-mod.png')",
         "--side-bar": "var(--mod-sidebar)",
+        "--star-image": "url('https://svgshare.com/i/17jt.svg')",
       },
       subscriber: {
         "--message-bg": "var(--regular-bg)",
@@ -32,6 +38,7 @@
         "--message-border": "var(--sub-border)",
         "--message-image": "url('https://i.ibb.co/CmfxfJ2/bg-star.png')",
         "--side-bar": "var(--sub-sidebar)",
+        "--star-image": "url('https://svgshare.com/i/17jt.svg')",
       },
     };
 
@@ -50,7 +57,7 @@
   <div class="name">
     <span>@{data.displayName}</span>
     <div class="badges">
-      {#each data.badges as badge}
+      {#each filteredBadges as badge}
         <img src={badgeUrls[badge.type]} alt={badge.description} />
       {/each}
     </div>
@@ -157,7 +164,7 @@
   .star {
     width: 20px;
     height: 20px;
-    background-image: url("https://i.ibb.co/7z1Zz1v/bg-star.svg");
+    background-image: var(--star-image);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
