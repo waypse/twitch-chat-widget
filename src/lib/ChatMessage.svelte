@@ -8,9 +8,12 @@
   );
 
   const badgeUrls = {
-    moderator: "https://i.ibb.co/Lt29fvf/mod.png",
-    broadcaster: "https://i.ibb.co/qDY25Qv/streamer.png",
-    subscriber: "https://i.ibb.co/d2KBwV4/sub.png",
+    moderator: "https://svgshare.com/i/17jb.svg",
+    broadcaster: "https://svgshare.com/i/17jc.svg",
+    subscriber: "https://svgshare.com/i/17ik.svg",
+    partner: "https://svgshare.com/i/17ko.svg",
+    vip: "https://svgshare.com/i/17kA.svg",
+    artist: "https://svgshare.com/i/17kz.svg",
   };
 
   const getStyles = () => {
