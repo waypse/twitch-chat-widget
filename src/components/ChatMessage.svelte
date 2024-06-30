@@ -1,11 +1,10 @@
 <script>
+  import { fly } from "svelte/transition";
+  import { getStyles } from "../lib/chatStyles";
+
   export let message;
 
   const data = message.data;
-
-  const filteredBadges = data.badges.filter((badge) =>
-    Object.keys(badgeUrls).includes(badge.type)
-  );
 
   const badgeUrls = {
     moderator: "https://svgshare.com/i/17jb.svg",
@@ -16,47 +15,19 @@
     artist: "https://svgshare.com/i/17kz.svg",
   };
 
-  const getStyles = () => {
-    const styles = {
-      broadcaster: {
-        "--message-bg": "var(--broadcaster-bg)",
-        "--message-color": "var(--broadcaster-text)",
-        "--message-border": "var(--brown-border)",
-        "--message-image":
-          "url('https://i.ibb.co/tKPDmYn/bg-star-broadcaster.png')",
-        "--side-bar": "var(--mod-sidebar)",
-        "--star-image": "url('https://svgshare.com/i/17jt.svg')",
-      },
-      mod: {
-        "--message-bg": "var(--mod-bg)",
-        "--message-color": "var(--white-text)",
-        "--message-border": "var(--brown-border)",
-        "--message-image": "url('https://i.ibb.co/4ZHJs0t/bg-star-mod.png')",
-        "--side-bar": "var(--mod-sidebar)",
-        "--star-image": "url('https://svgshare.com/i/17jt.svg')",
-      },
-      subscriber: {
-        "--message-bg": "var(--regular-bg)",
-        "--message-color": "var(--white-text)",
-        "--message-border": "var(--sub-border)",
-        "--message-image": "url('https://i.ibb.co/CmfxfJ2/bg-star.png')",
-        "--side-bar": "var(--sub-sidebar)",
-        "--star-image": "url('https://svgshare.com/i/17jt.svg')",
-      },
-    };
-
-    const userType = data.tags["user-type"];
-    const res =
-      styles[userType] || (data.tags.subscriber ? styles.subscriber : {});
-
-    return Object.entries(res).reduce(
-      (acc, [key, value]) => `${acc}${key}: ${value};`,
-      ""
-    );
-  };
+  const filteredBadges = data.badges.filter((badge) =>
+    Object.keys(badgeUrls).includes(badge.type)
+  );
 </script>
 
-<div class="chat-message" style={getStyles()}>
+<div class="debug">
+  <pre>{JSON.stringify(data, null, 2)}</pre>
+</div>
+<div
+  class="chat-message"
+  style={getStyles(data)}
+  transition:fly={{ x: 100, duration: 200 }}
+>
   <div class="name">
     <span>@{data.displayName}</span>
     <div class="badges">
@@ -69,7 +40,7 @@
   <div class="message">
     <div class="text-box">
       <p>{@html message.renderedText}</p>
-      {#if data.tags.subscriber}
+      {#if data.tags.subscriber == 1}
         <div class="sub-bar"></div>
       {/if}
     </div>
@@ -81,6 +52,11 @@
 </div>
 
 <style>
+  .debug {
+    background-color: white;
+    padding: 10px;
+    color: black;
+  }
   p {
     margin: 0;
   }
