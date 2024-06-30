@@ -1,5 +1,6 @@
 const styles = {
   broadcaster: {
+    "--name-color": "var(--broadcaster-text)",
     "--message-bg": "var(--broadcaster-bg)",
     "--message-color": "var(--broadcaster-text)",
     "--message-border": "var(--brown-border)",
@@ -9,6 +10,7 @@ const styles = {
     "--star-image": "url('https://svgshare.com/i/17ks.svg')",
   },
   mod: {
+    "--name-color": "var(--mod-text)",
     "--message-bg": "var(--mod-bg)",
     "--message-color": "var(--white-text)",
     "--message-border": "var(--brown-border)",
@@ -17,6 +19,7 @@ const styles = {
     "--star-image": "url('https://svgshare.com/i/17jG.svg ')",
   },
   subscriber: {
+    "--name-color": "var(--brown-text)",
     "--message-bg": "var(--regular-bg)",
     "--message-color": "var(--white-text)",
     "--message-border": "var(--sub-border)",
@@ -25,6 +28,7 @@ const styles = {
     "--star-image": "url('https://svgshare.com/i/17jt.svg')",
   },
   regular: {
+    "--name-color": "var(--brown-text)",
     "--message-bg": "var(--regular-bg)",
     "--message-color": "var(--white-text)",
     "--message-border": "var(--brown-border)",
@@ -32,6 +36,15 @@ const styles = {
     "--side-bar": "var(--regular-sidebar)",
     "--star-image": "url('https://svgshare.com/i/17jt.svg')",
   },
+};
+
+export const badgeUrls = {
+  moderator: "https://svgshare.com/i/17jb.svg",
+  broadcaster: "https://svgshare.com/i/17jc.svg",
+  subscriber: "https://svgshare.com/i/17ik.svg",
+  partner: "https://svgshare.com/i/17ko.svg",
+  vip: "https://svgshare.com/i/17kA.svg",
+  artist: "https://svgshare.com/i/17kz.svg",
 };
 
 export const getStyles = (data) => {

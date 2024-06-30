@@ -7,6 +7,10 @@ body {
   font-weight: bold;
   letter-spacing: 0.5px;
 
+  --broadcaster-text: #583a21;
+  --mod-text: #752c16;
+  --brown-text: #32251f;
+
   --broadcaster-bg: #fcd67f;
   --mod-bg: #742b15;
   --regular-bg: #372924;
@@ -19,4 +23,8 @@ body {
 
   --brown-border: #52341c;
   --sub-border: #ffd780;
+}
+
+.emote {
+  width: 18px;
 }

@@ -1,28 +1,23 @@
 <script>
   import { fly } from "svelte/transition";
-  import { getStyles } from "../lib/chatStyles";
+  import { getStyles, badgeUrls } from "../lib/chatStyles";
 
   export let message;
 
   const data = message.data;
 
-  const badgeUrls = {
-    moderator: "https://svgshare.com/i/17jb.svg",
-    broadcaster: "https://svgshare.com/i/17jc.svg",
-    subscriber: "https://svgshare.com/i/17ik.svg",
-    partner: "https://svgshare.com/i/17ko.svg",
-    vip: "https://svgshare.com/i/17kA.svg",
-    artist: "https://svgshare.com/i/17kz.svg",
-  };
+  const isBroadcaster = data.badges.some(
+    (badge) => badge.type === "broadcaster"
+  );
 
   const filteredBadges = data.badges.filter((badge) =>
     Object.keys(badgeUrls).includes(badge.type)
   );
 </script>
 
-<div class="debug">
+<!--<div class="debug">
   <pre>{JSON.stringify(data, null, 2)}</pre>
-</div>
+</div>-->
 <div
   class="chat-message"
   style={getStyles(data)}
@@ -38,10 +33,17 @@
   </div>
   <div class="void" />
   <div class="message">
-    <div class="text-box">
+    <div class="text-box" class:padding-broadcaster={isBroadcaster}>
       <p>{@html message.renderedText}</p>
       {#if data.tags.subscriber == 1}
         <div class="sub-bar"></div>
+      {/if}
+      {#if isBroadcaster}
+        <img
+          class="moon-shape"
+          src="https://svgshare.com/i/17jf.svg"
+          alt="moon-shape"
+        />
       {/if}
     </div>
   </div>
@@ -57,9 +59,11 @@
     padding: 10px;
     color: black;
   }
+
   p {
     margin: 0;
   }
+
   .chat-message {
     display: grid;
     grid-template-columns: 1fr 40px;
@@ -80,6 +84,7 @@
     grid-area: name;
     gap: 15px;
     font-size: 16px;
+    color: var(--name-color);
   }
 
   .badges {
@@ -110,6 +115,11 @@
     background-position: center;
     background-size: 50%;
     box-sizing: border-box;
+    position: relative;
+  }
+
+  .padding-broadcaster {
+    padding-left: 1.7rem;
   }
 
   .text-box p {
@@ -147,5 +157,12 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+  }
+
+  .moon-shape {
+    bottom: -1.83rem;
+    left: -1.6rem;
+    width: 8rem;
+    position: absolute;
   }
 </style>
