@@ -54,11 +54,11 @@
 </div>
 
 <style>
-  .debug {
+  /* .debug {
     background-color: white;
     padding: 10px;
     color: black;
-  }
+  } */
 
   p {
     margin: 0;
@@ -72,7 +72,6 @@
       "name void"
       "message custom-elements";
 
-    row-gap: 5px;
     column-gap: 15px;
     padding-right: 15px;
   }
@@ -83,7 +82,7 @@
     flex-direction: row-reverse;
     grid-area: name;
     gap: 15px;
-    font-size: 16px;
+    font-size: 17px;
     color: var(--name-color);
   }
 
@@ -106,7 +105,7 @@
     display: flex;
     flex-direction: row-reverse;
     border-radius: 12px;
-    font-size: 18px;
+    font-size: 20px;
     background-color: var(--message-bg);
     border: 1px solid var(--message-border);
     color: var(--message-color);
@@ -147,7 +146,8 @@
     height: 80%;
     width: 6px;
     border-radius: 12px;
-    background-color: #362823;
+    background-color: var(--message-bg);
+    border: 1px solid var(--message-border);
   }
 
   .star {
@@ -160,9 +160,9 @@
   }
 
   .moon-shape {
-    bottom: -1.83rem;
+    bottom: -1.63rem;
     left: -1.6rem;
-    width: 8rem;
+    width: 7rem;
     position: absolute;
   }
 </style>
