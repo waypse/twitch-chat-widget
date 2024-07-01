@@ -4,7 +4,7 @@
     getStyles,
     getUserTypes,
     badgeUrls,
-    heartUrls,
+    pinUrls,
   } from "../lib/chatStyles";
 
   export let message;
@@ -13,6 +13,15 @@
 
   const { isBroadcaster, isMod, isSub } = getUserTypes(data);
 
+  const userType = isBroadcaster
+    ? "broadcaster"
+    : isMod
+      ? "mod"
+      : isSub
+        ? "sub"
+        : "regular";
+
+  // Twitch has a ton of badges, we don't want to show all of them, so we filter them out
   const filteredBadges = data.badges.filter((badge) =>
     Object.keys(badgeUrls).includes(badge.type)
   );
@@ -38,25 +47,20 @@
   </div>
   <div class="void" />
   <div class="message">
-    {#if isSub && !isBroadcaster}
+    {#if isSub || isBroadcaster}
       <img
-        class="heart"
-        src={isMod ? heartUrls.mod : heartUrls.sub}
-        alt="heart"
+        class="pin"
+        class:broadcaster={userType === "broadcaster"}
+        src={pinUrls[userType]}
+        alt="pin"
       />
     {/if}
     <div
       class="text-box"
       class:broadcaster={isBroadcaster}
-      class:col-1={isBroadcaster || (!isSub && !isMod)}
+      class:col-1={userType === "regular"}
     >
-      {#if isBroadcaster}
-        <img
-          class="moon-shape"
-          src="https://svgshare.com/i/17jf.svg"
-          alt="moon-shape"
-        />
-      {:else if isSub || isMod}
+      {#if userType !== "regular"}
         <div class="sub-bar"></div>
       {/if}
       <p>{@html message.renderedText}</p>
@@ -134,11 +138,6 @@
     position: relative;
   }
 
-  .text-box.broadcaster {
-    min-width: 250px;
-    padding-left: 1.7rem;
-  }
-
   .col-1 {
     grid-template-columns: 1fr;
   }
@@ -180,17 +179,14 @@
     background-position: center;
   }
 
-  .moon-shape {
-    bottom: -1.63rem;
-    left: -1.3rem;
-    width: 7rem;
-    position: absolute;
+  .pin {
+    position: relative;
+    left: 20px;
+    width: 4.44rem;
+    height: auto;
+    z-index: 2;
   }
-
-  .heart {
-    bottom: 0;
-    left: -4rem;
-    width: 3.5rem;
-    height: 3.5rem;
+  .pin.broadcaster {
+    width: 4rem;
   }
 </style>

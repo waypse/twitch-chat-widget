@@ -6,7 +6,7 @@ const styles = {
     "--message-border": "var(--brown-border)",
     "--message-image":
       "url('https://i.ibb.co/tKPDmYn/bg-star-broadcaster.png')",
-    "--side-bar": "var(--mod-sidebar)",
+    "--side-bar": "var(--broadcaster-sidebar)",
     "--star-image": "url('https://svgshare.com/i/17ks.svg')",
   },
   mod: {
@@ -47,15 +47,18 @@ export const badgeUrls = {
   artist: "https://svgshare.com/i/17kz.svg",
 };
 
-export const heartUrls = {
-  mod: "https://i.ibb.co/sFt8kkz/modheart.png",
-  sub: "https://i.ibb.co/6Ps7Drq/subheart.png",
+export const pinUrls = {
+  mod: "https://i.ibb.co/G2r41HC/modheart.png",
+  sub: "https://i.ibb.co/HPbv8d1/subheart.png",
+  broadcaster: "https://i.ibb.co/QdfHVQq/badge-streamer.png",
 };
 
 export const getUserTypes = (data) => {
+  /** @type {boolean} */
   const isBroadcaster = data.badges.some(
     (badge) => badge.type === "broadcaster"
   );
+  /** @type {boolean} */
   const isMod = data.badges.some((badge) => badge.type === "moderator");
   const isSub = data.tags.subscriber == 1;
 

@@ -55,7 +55,7 @@ export const defaultMessage = {
     msgId: "43285909-412c-4eee-b80d-89f72ba53142",
   },
   renderedText:
-    '<img src="https://static-cdn.jtvnw.net/emoticons/v1/25/1.0" srcset="https://static-cdn.jtvnw.net/emoticons/v1/25/1.0 1x, https://static-cdn.jtvnw.net/emoticons/v1/25/1.0 2x, https://static-cdn.jtvnw.net/emoticons/v1/25/3.0 4x" title="Kappa" class="emote">',
+    'Howdy! My name is Bill and I am here to serve <img src="https://static-cdn.jtvnw.net/emoticons/v1/25/1.0" srcset="https://static-cdn.jtvnw.net/emoticons/v1/25/1.0 1x, https://static-cdn.jtvnw.net/emoticons/v1/25/1.0 2x, https://static-cdn.jtvnw.net/emoticons/v1/25/3.0 4x" title="Kappa" class="emote">',
 };
 
 export const addMessage =
@@ -69,6 +69,15 @@ export const addMessage =
           ...defaultMessage.data,
           msgId: Math.random().toString(),
           tags: { ...defaultMessage.data.tags, subscriber: "1" },
+          badges: [
+            ...defaultMessage.data.badges,
+            {
+              type: "subscriber",
+              description: "Subscriber",
+              url: "subscriber",
+              version: "1",
+            },
+          ],
         },
       };
     } else if (messageType === "mod") {
