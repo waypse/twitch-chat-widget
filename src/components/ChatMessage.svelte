@@ -29,11 +29,6 @@
   );
 </script>
 
-<!-- {#if import.meta.env.MODE === "development"}
-  <div class="debug">
-    <pre>{JSON.stringify(data, null, 2)}</pre>
-  </div>
-{/if} -->
 <div
   class="chat-message"
   style={getStyles(data)}
@@ -76,12 +71,6 @@
 </div>
 
 <style>
-  /* .debug {
-    background-color: white;
-    padding: 10px;
-    color: black;
-  } */
-
   p {
     margin: 0;
   }

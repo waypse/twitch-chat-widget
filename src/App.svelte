@@ -6,8 +6,12 @@
     // @ts-ignore
     const { listener, event } = obj.detail;
 
+    if (listener === "subscriber-latest") {
+      $messages = [{ ...event, messageType: "alert" }, ...$messages];
+    }
+
     if (listener === "message") {
-      $messages = [event, ...$messages];
+      $messages = [{ ...event, messageType: "message" }, ...$messages];
     }
 
     if (listener === "delete-message") {
@@ -37,7 +41,13 @@
 {/if}
 <div class="chat">
   {#each $messages as message (message.data.msgId)}
-    <ChatMessage {message} />
+    {#if message.messageType === "alert"}
+      <div class="debug">
+        <pre>{JSON.stringify(message, null, 2)}</pre>
+      </div>
+    {:else}
+      <ChatMessage {message} />
+    {/if}
   {/each}
 </div>
 
@@ -67,5 +77,11 @@
     background-color: white;
     border: none;
     border-radius: 5px;
+  }
+
+  .debug {
+    background-color: white;
+    padding: 10px;
+    color: black;
   }
 </style>
