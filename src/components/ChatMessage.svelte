@@ -10,6 +10,10 @@
     (badge) => badge.type === "broadcaster"
   );
 
+  const isMod = data.badges.some((badge) => badge.type === "moderator");
+
+  const isSub = data.tags.subscriber == 1;
+
   const filteredBadges = data.badges.filter((badge) =>
     Object.keys(badgeUrls).includes(badge.type)
   );
@@ -33,9 +37,16 @@
   </div>
   <div class="void" />
   <div class="message">
+    {#if isSub}
+      <img
+        class="mod-heart"
+        src="https://i.ibb.co/sFt8kkz/modheart.png"
+        alt="mod-heart"
+      />
+    {/if}
     <div class="text-box" class:padding-broadcaster={isBroadcaster}>
       <p>{@html message.renderedText}</p>
-      {#if data.tags.subscriber == 1}
+      {#if isSub || isMod}
         <div class="sub-bar"></div>
       {/if}
       {#if isBroadcaster}
@@ -73,6 +84,7 @@
       "message custom-elements";
 
     column-gap: 15px;
+    row-gap: 4px;
     padding-right: 15px;
   }
 
@@ -81,24 +93,26 @@
     align-items: center;
     flex-direction: row-reverse;
     grid-area: name;
-    gap: 15px;
+    gap: 20px;
     font-size: 17px;
     color: var(--name-color);
   }
 
   .badges {
     display: flex;
-    gap: 5px;
+    gap: 12px;
   }
 
   .badges img {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
   }
 
   .message {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    gap: 0.825rem;
   }
 
   .text-box {
@@ -127,7 +141,6 @@
 
   .sub-bar {
     width: 10px;
-    height: 100%;
     background-color: var(--side-bar);
     border-radius: 12px 0 0 12px;
     border-left: 1px solid var(--side-bar);
@@ -144,15 +157,15 @@
 
   .long-bar {
     height: 80%;
-    width: 6px;
+    width: 4px;
     border-radius: 12px;
     background-color: var(--message-bg);
     border: 1px solid var(--message-border);
   }
 
   .star {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     background-image: var(--star-image);
     background-size: contain;
     background-repeat: no-repeat;
@@ -161,8 +174,21 @@
 
   .moon-shape {
     bottom: -1.63rem;
-    left: -1.6rem;
+    left: -1.3rem;
     width: 7rem;
     position: absolute;
+  }
+
+  .mod-heart {
+    bottom: 0;
+    left: -4rem;
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .sub-heart {
+    bottom: -1.63rem;
+    left: -1.3rem;
+    width: 4rem;
   }
 </style>

@@ -15,7 +15,7 @@ export const messages = writable([
         id: "43285909-412c-4eee-b80d-89f72ba53142",
         mod: "1",
         "room-id": "85827806",
-        subscriber: "0",
+        subscriber: "1",
         "tmi-sent-ts": "1579444549265",
         turbo: "0",
         "user-id": "100135110",
@@ -27,7 +27,7 @@ export const messages = writable([
       displayColor: "#5B99FF",
       badges: [
         {
-          type: "broadcaster",
+          type: "moderator",
           version: "1",
           url: "https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/3",
           description: "Broadcaster",
@@ -60,7 +60,7 @@ export const messages = writable([
       msgId: "43285909-412c-4eee-b80d-89f72ba53142",
     },
     renderedText:
-      'Howdy! My name is Bill and I am here to serve <img src="https://static-cdn.jtvnw.net/emoticons/v1/25/1.0" srcset="https://static-cdn.jtvnw.net/emoticons/v1/25/1.0 1x, https://static-cdn.jtvnw.net/emoticons/v1/25/1.0 2x, https://static-cdn.jtvnw.net/emoticons/v1/25/3.0 4x" title="Kappa" class="emote">, ksdfnjdksfjsd kjksfsdfjkjksdf jksdfjkjkfsd jk jksdf jkasdf jk sdfjkjkjksdfjkjk jkjk fjkjksf d',
+      'Howdy! My name is Bill and I am here to serve Howdy! My name is Bill and I am here to serve Howdy! My name is Bill and I am here to serve Howdy! My name is Bill and I am here to serve Howdy! My name is Bill and I am here to serve <img src="https://static-cdn.jtvnw.net/emoticons/v1/25/1.0" srcset="https://static-cdn.jtvnw.net/emoticons/v1/25/1.0 1x, https://static-cdn.jtvnw.net/emoticons/v1/25/1.0 2x, https://static-cdn.jtvnw.net/emoticons/v1/25/3.0 4x" title="Kappa" class="emote">',
   },
 ]);
 
