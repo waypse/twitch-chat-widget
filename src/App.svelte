@@ -1,6 +1,6 @@
 <script>
   import ChatMessage from "./components/ChatMessage.svelte";
-  import { messages } from "./lib/stores/chat";
+  import { messages, addMessage } from "./lib/stores/chat";
 
   window.addEventListener("onEventReceived", function (obj) {
     // @ts-ignore
@@ -26,6 +26,15 @@
   $: $messages.length >= 20 && $messages.pop() && ($messages = $messages);
 </script>
 
+{#if import.meta.env.MODE === "development"}
+  <div class="debug-actions">
+    <button on:click={addMessage(null)}>add default message</button>
+    <button on:click={addMessage("sub")}>add sub message</button>
+    <button on:click={addMessage("mod")}>add mod message</button>
+    <button on:click={addMessage("broadcaster")}>add broadcaster message</button
+    >
+  </div>
+{/if}
 <div class="chat">
   {#each $messages as message (message.data.msgId)}
     <ChatMessage {message} />
@@ -42,5 +51,21 @@
     padding: 30px;
     padding-right: 0;
     row-gap: 1.5rem;
+  }
+
+  .debug-actions {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    background-color: blue;
+    border-radius: 10px;
+    z-index: 1000;
+  }
+  .debug-actions button {
+    padding: 10px;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
   }
 </style>

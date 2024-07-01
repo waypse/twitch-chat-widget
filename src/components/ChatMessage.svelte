@@ -1,27 +1,28 @@
 <script>
   import { fly } from "svelte/transition";
-  import { getStyles, badgeUrls, heartUrls } from "../lib/chatStyles";
+  import {
+    getStyles,
+    getUserTypes,
+    badgeUrls,
+    heartUrls,
+  } from "../lib/chatStyles";
 
   export let message;
 
   const data = message.data;
 
-  const isBroadcaster = data.badges.some(
-    (badge) => badge.type === "broadcaster"
-  );
-
-  const isMod = data.badges.some((badge) => badge.type === "moderator");
-
-  const isSub = data.tags.subscriber == 1;
+  const { isBroadcaster, isMod, isSub } = getUserTypes(data);
 
   const filteredBadges = data.badges.filter((badge) =>
     Object.keys(badgeUrls).includes(badge.type)
   );
 </script>
 
-<!--<div class="debug">
-  <pre>{JSON.stringify(data, null, 2)}</pre>
-</div>-->
+<!-- {#if import.meta.env.MODE === "development"}
+  <div class="debug">
+    <pre>{JSON.stringify(data, null, 2)}</pre>
+  </div>
+{/if} -->
 <div
   class="chat-message"
   style={getStyles(data)}

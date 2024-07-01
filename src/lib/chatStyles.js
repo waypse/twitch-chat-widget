@@ -52,12 +52,22 @@ export const heartUrls = {
   sub: "https://i.ibb.co/6Ps7Drq/subheart.png",
 };
 
-export const getStyles = (data) => {
+export const getUserTypes = (data) => {
   const isBroadcaster = data.badges.some(
     (badge) => badge.type === "broadcaster"
   );
   const isMod = data.badges.some((badge) => badge.type === "moderator");
   const isSub = data.tags.subscriber == 1;
+
+  return {
+    isBroadcaster,
+    isMod,
+    isSub,
+  };
+};
+
+export const getStyles = (data) => {
+  const { isBroadcaster, isMod, isSub } = getUserTypes(data);
 
   const res = isBroadcaster
     ? styles.broadcaster
