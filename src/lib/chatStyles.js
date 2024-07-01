@@ -47,6 +47,11 @@ export const badgeUrls = {
   artist: "https://svgshare.com/i/17kz.svg",
 };
 
+export const heartUrls = {
+  mod: "https://i.ibb.co/sFt8kkz/modheart.png",
+  sub: "https://i.ibb.co/6Ps7Drq/subheart.png",
+};
+
 export const getStyles = (data) => {
   const isBroadcaster = data.badges.some(
     (badge) => badge.type === "broadcaster"

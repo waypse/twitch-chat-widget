@@ -1,6 +1,6 @@
 <script>
   import { fly } from "svelte/transition";
-  import { getStyles, badgeUrls } from "../lib/chatStyles";
+  import { getStyles, badgeUrls, heartUrls } from "../lib/chatStyles";
 
   export let message;
 
@@ -37,25 +37,28 @@
   </div>
   <div class="void" />
   <div class="message">
-    {#if isSub}
+    {#if isSub && !isBroadcaster}
       <img
-        class="mod-heart"
-        src="https://i.ibb.co/sFt8kkz/modheart.png"
-        alt="mod-heart"
+        class="heart"
+        src={isMod ? heartUrls.mod : heartUrls.sub}
+        alt="heart"
       />
     {/if}
-    <div class="text-box" class:padding-broadcaster={isBroadcaster}>
-      <p>{@html message.renderedText}</p>
-      {#if isSub || isMod}
-        <div class="sub-bar"></div>
-      {/if}
+    <div
+      class="text-box"
+      class:broadcaster={isBroadcaster}
+      class:col-1={isBroadcaster || (!isSub && !isMod)}
+    >
       {#if isBroadcaster}
         <img
           class="moon-shape"
           src="https://svgshare.com/i/17jf.svg"
           alt="moon-shape"
         />
+      {:else if isSub || isMod}
+        <div class="sub-bar"></div>
       {/if}
+      <p>{@html message.renderedText}</p>
     </div>
   </div>
   <div class="custom-elements">
@@ -78,13 +81,12 @@
   .chat-message {
     display: grid;
     grid-template-columns: 1fr 40px;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: 45px 1fr;
     grid-template-areas:
       "name void"
       "message custom-elements";
 
     column-gap: 15px;
-    row-gap: 4px;
     padding-right: 15px;
   }
 
@@ -116,8 +118,8 @@
   }
 
   .text-box {
-    display: flex;
-    flex-direction: row-reverse;
+    display: grid;
+    grid-template-columns: 10px 1fr;
     border-radius: 12px;
     font-size: 20px;
     background-color: var(--message-bg);
@@ -131,8 +133,13 @@
     position: relative;
   }
 
-  .padding-broadcaster {
+  .text-box.broadcaster {
+    min-width: 250px;
     padding-left: 1.7rem;
+  }
+
+  .col-1 {
+    grid-template-columns: 1fr;
   }
 
   .text-box p {
@@ -179,16 +186,10 @@
     position: absolute;
   }
 
-  .mod-heart {
+  .heart {
     bottom: 0;
     left: -4rem;
     width: 3.5rem;
     height: 3.5rem;
-  }
-
-  .sub-heart {
-    bottom: -1.63rem;
-    left: -1.3rem;
-    width: 4rem;
   }
 </style>
