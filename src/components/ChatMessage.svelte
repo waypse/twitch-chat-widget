@@ -21,6 +21,8 @@
         ? "sub"
         : "regular";
 
+  const emoteOnly = data.tags["emote-only"] === "1";
+
   // Twitch has a ton of badges, we don't want to show all of them, so we filter them out
   const filteredBadges = data.badges.filter((badge) =>
     Object.keys(badgeUrls).includes(badge.type)
@@ -57,6 +59,7 @@
     {/if}
     <div
       class="text-box"
+      class:emoteOnly
       class:broadcaster={isBroadcaster}
       class:col-1={userType === "regular"}
     >
@@ -144,6 +147,8 @@
 
   .text-box p {
     padding: 16px 25px;
+    word-break: break-all;
+    hyphens: auto;
   }
 
   .sub-bar {
@@ -188,5 +193,13 @@
   }
   .pin.broadcaster {
     width: 4rem;
+  }
+
+  :global(.emote) {
+    width: 18px;
+    vertical-align: middle;
+  }
+  :global(.emoteOnly .emote) {
+    width: 24px;
   }
 </style>
