@@ -1,17 +1,23 @@
 <script>
   import ChatMessage from "./components/ChatMessage.svelte";
-  import { messages, addMessage } from "./lib/stores/chat";
+  import { messages, addMessage, sendAlert } from "./lib/stores/chat";
+
+  const rand = () => {
+    return Math.random().toString(36).substr(2); // remove `0.`
+  };
 
   window.addEventListener("onEventReceived", function (obj) {
     // @ts-ignore
     const { listener, event } = obj.detail;
 
+    const token = rand() + rand(); // to make sure the key is unique
+
     if (listener === "subscriber-latest") {
-      $messages = [{ ...event, messageType: "alert" }, ...$messages];
+      $messages = [{ ...event, messageType: "alert", token }, ...$messages];
     }
 
     if (listener === "message") {
-      $messages = [{ ...event, messageType: "message" }, ...$messages];
+      $messages = [{ ...event, messageType: "message", token }, ...$messages];
     }
 
     if (listener === "delete-message") {
@@ -37,10 +43,11 @@
     <button on:click={addMessage("mod")}>add mod message</button>
     <button on:click={addMessage("broadcaster")}>add broadcaster message</button
     >
+    <button on:click={sendAlert}>send alert</button>
   </div>
 {/if}
 <div class="chat">
-  {#each $messages as message (message.data.msgId)}
+  {#each $messages as message (message.token)}
     {#if message.messageType === "alert"}
       <div class="debug">
         <pre>{JSON.stringify(message, null, 2)}</pre>

@@ -131,6 +131,24 @@ export const addMessage =
     );
   };
 
+export const sendAlert = () => {
+  const alert = {
+    messageType: "alert",
+    name: "subscriber-latest",
+    amount: 1,
+    message: "New subscriber",
+    gifted: "0",
+  };
+
+  window.dispatchEvent(
+    new CustomEvent("onEventReceived", {
+      detail: {
+        listener: "subscriber-latest",
+        event: alert,
+      },
+    })
+  );
+};
 // {
 //   service: "twitch",
 //   data: {
