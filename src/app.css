@@ -1,6 +1,7 @@
 @import url(https://db.onlinewebfonts.com/c/5237a1e3a872fc2e31712575aa39235b?family=Visby+Round+CF+Heavy);
 
 body {
+  overflow: hidden;
   margin: 0;
   padding: 0;
   font-family: "Visby Round CF Heavy", sans-serif;

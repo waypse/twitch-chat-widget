@@ -1,5 +1,4 @@
 <script>
-  import { fly } from "svelte/transition";
   import {
     getStyles,
     getUserTypes,
@@ -29,11 +28,7 @@
   );
 </script>
 
-<div
-  class="chat-message"
-  style={getStyles(data)}
-  transition:fly={{ x: 100, duration: 200 }}
->
+<div class="chat-message" style={getStyles(data)}>
   <div class="name">
     <span>@{data.displayName}</span>
     <div class="badges">
@@ -120,7 +115,7 @@
     border-radius: 12px;
     font-size: 20px;
     background-color: var(--message-bg);
-    border: 1px solid var(--message-border);
+    border: 2px solid var(--message-border);
     color: var(--message-color);
     background-image: var(--message-image);
     background-repeat: no-repeat;
@@ -189,6 +184,6 @@
     vertical-align: middle;
   }
   :global(.emoteOnly .emote) {
-    width: 24px;
+    width: 30px;
   }
 </style>
