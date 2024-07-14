@@ -1,8 +1,8 @@
 <script>
   import { flip } from "svelte/animate";
-  import ChatMessage from "./components/ChatMessage.svelte";
-  import { messages, addMessage, sendAlert } from "./lib/stores/chat";
   import { fly } from "svelte/transition";
+  import { messages, addMessage, sendAlert } from "./lib/stores/chat";
+  import ChatMessage from "./components/ChatMessage.svelte";
 
   const rand = () => {
     return Math.random().toString(36).substr(2); // remove `0.`
@@ -50,10 +50,7 @@
 {/if}
 <div class="chat">
   {#each $messages as message (message.token)}
-    <div
-      animate:flip={{ duration: 200 }}
-      transition:fly={{ x: 100, duration: 200 }}
-    >
+    <div animate:flip={{ duration: 200 }} in:fly={{ x: 100, duration: 200 }}>
       {#if message.messageType === "alert"}
         <div class="debug">
           <pre>{JSON.stringify(message, null, 2)}</pre>

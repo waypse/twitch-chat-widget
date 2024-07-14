@@ -54,14 +54,28 @@
       class:col-1={userType === "regular"}
     >
       {#if userType !== "regular"}
-        <div class="sub-bar"></div>
+        <div class="side-bar"></div>
       {/if}
       <p>{@html message.renderedText}</p>
     </div>
   </div>
   <div class="custom-elements">
     <div class="long-bar" />
-    <div class="star" />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="72"
+      height="72"
+      viewBox="0 0 72 72"
+      fill="none"
+      class="star"
+    >
+      <path
+        d="M40.3223 5.41135L48.7832 19.961C49.5678 21.3102 50.6898 22.4322 52.039 23.2168L66.5886 31.6777C69.904 33.6056 69.904 38.3944 66.5887 40.3223L52.039 48.7832C50.6898 49.5678 49.5678 50.6898 48.7832 52.039L40.3223 66.5886C38.3944 69.904 33.6056 69.904 31.6777 66.5887L23.2168 52.039C22.4322 50.6898 21.3102 49.5678 19.961 48.7832L5.41136 40.3223C2.09601 38.3944 2.09601 33.6056 5.41135 31.6777L19.961 23.2168C21.3102 22.4322 22.4322 21.3102 23.2168 19.961L31.6777 5.41136C33.6056 2.09601 38.3944 2.09601 40.3223 5.41135Z"
+        fill="var(--message-bg)"
+        stroke="var(--message-border)"
+        stroke-width="4"
+      />
+    </svg>
   </div>
 </div>
 
@@ -123,6 +137,7 @@
     background-size: 50%;
     box-sizing: border-box;
     position: relative;
+    box-shadow: var(--glow);
   }
 
   .col-1 {
@@ -135,11 +150,10 @@
     hyphens: auto;
   }
 
-  .sub-bar {
-    width: 10px;
+  .side-bar {
+    width: 15px;
     background-color: var(--side-bar);
-    border-radius: 12px 0 0 12px;
-    border-left: 1px solid var(--side-bar);
+    border-radius: 8px 0 0 8px;
   }
 
   .custom-elements {
@@ -162,10 +176,6 @@
   .star {
     width: 15px;
     height: 15px;
-    background-image: var(--star-image);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
   }
 
   .pin {

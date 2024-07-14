@@ -58,9 +58,8 @@ export const defaultMessage = {
     'Howdy! My name is Bill and I am here to serve <img src="https://static-cdn.jtvnw.net/emoticons/v1/25/1.0" srcset="https://static-cdn.jtvnw.net/emoticons/v1/25/1.0 1x, https://static-cdn.jtvnw.net/emoticons/v1/25/1.0 2x, https://static-cdn.jtvnw.net/emoticons/v1/25/3.0 4x" title="Kappa" class="emote">',
 };
 
-export const addMessage =
-  (messageType = null) =>
-  () => {
+export function addMessage(messageType = null) {
+  return () => {
     let message;
     if (messageType === "sub") {
       message = {
@@ -130,6 +129,7 @@ export const addMessage =
       })
     );
   };
+}
 
 export const sendAlert = () => {
   const alert = {

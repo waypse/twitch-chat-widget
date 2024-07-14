@@ -7,22 +7,49 @@ body {
   font-family: "Visby Round CF Heavy", sans-serif;
   font-weight: bold;
   letter-spacing: 0.5px;
+  background-color: #838383;
 
-  --broadcaster-text: #583a21;
-  --mod-text: #752c16;
-  --brown-text: #32251f;
+  --pastel-yellow: #ffd780;
+  --caca-brown: #6c472a;
+  --dark-brown: #52341c;
 
-  --broadcaster-bg: #fcd67f;
-  --mod-bg: #742b15;
-  --regular-bg: #372924;
+  --dark-salmon: #e2886d;
+  --light-salmon: #feb099;
+  --pale-salmon: #ffcdbe;
 
-  --sub-sidebar: #f1c071;
-  --mod-sidebar: #392a23;
-  --broadcaster-sidebar: #6c472a;
+  --goku-red: #722913;
+  --white: #fffffe;
+  --dark: #352722;
 
-  --broadcaster-text: #52341c;
-  --white-text: #fffffe;
+  --pink-white: #e1cac2;
+  --beige: #a8867a;
+  --cream: #ffedc6;
 
-  --brown-border: #52341c;
-  --sub-border: #ffd780;
+  --broadcaster-name: var(--pastel-yellow);
+  --broadcaster-bg: var(--pastel-yellow);
+  --broadcaster-text: var(--dark-brown);
+  --broadcaster-sidebar: var(--caca-brown);
+  --broadcaster-border: var(--dark-brown);
+  --broadcaster-glow: 0 0 30px 5px rgba(255, 215, 128, 0.2);
+
+  --mod-name: var(--light-salmon);
+  --mod-text: var(--pale-salmon);
+  --mod-bg: var(--goku-red);
+  --mod-sidebar: var(--dark-salmon);
+  --mod-border: var(--dark-salmon);
+  --mod-glow: 0 0 30px 5px rgba(255, 176, 153, 0.2);
+
+  --sub-name: var(--cream);
+  --sub-text: var(--cream);
+  --sub-bg: var(--dark);
+  --sub-border: var(--pastel-yellow);
+  --sub-sidebar: var(--pastel-yellow);
+  --sub-glow: 0 0 30px 5px rgba(255, 215, 128, 0.2);
+
+  --regular-name: var(--pink-white);
+  --regular-text: var(--pink-white);
+  --regular-bg: var(--dark);
+  --regular-border: var(--beige);
+  --regular-sidebar: var(--beige);
+  --regular-glow: 0 0 30px 5px rgba(168, 134, 122, 0.2);
 }
