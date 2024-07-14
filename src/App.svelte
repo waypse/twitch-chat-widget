@@ -46,6 +46,7 @@
     <button on:click={addMessage("broadcaster")}>add broadcaster message</button
     >
     <button on:click={sendAlert}>send alert</button>
+    <button on:click={addMessage("emote-only")}>emote-only</button>
   </div>
 {/if}
 <div class="chat">

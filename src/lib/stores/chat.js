@@ -61,66 +61,83 @@ export const defaultMessage = {
 export function addMessage(messageType = null) {
   return () => {
     let message;
-    if (messageType === "sub") {
-      message = {
-        ...defaultMessage,
-        data: {
-          ...defaultMessage.data,
-          msgId: Math.random().toString(),
-          tags: { ...defaultMessage.data.tags, subscriber: "1" },
-          badges: [
-            ...defaultMessage.data.badges,
-            {
-              type: "subscriber",
-              description: "Subscriber",
-              url: "subscriber",
-              version: "1",
-            },
-          ],
-        },
-      };
-    } else if (messageType === "mod") {
-      message = {
-        ...defaultMessage,
-        data: {
-          ...defaultMessage.data,
-          msgId: Math.random().toString(),
-          badges: [
-            ...defaultMessage.data.badges,
-            {
-              type: "moderator",
-              description: "Moderator",
-              url: "moderator",
-              version: "1",
-            },
-          ],
-        },
-      };
-    } else if (messageType === "broadcaster") {
-      message = {
-        ...defaultMessage,
-        data: {
-          ...defaultMessage.data,
-          msgId: Math.random().toString(),
-          badges: [
-            ...defaultMessage.data.badges,
-            {
-              type: "broadcaster",
-              description: "Broadcaster",
-              url: "broadcaster",
-              version: "1",
-            },
-          ],
-        },
-      };
-    } else {
-      message = {
-        ...defaultMessage,
-        data: {
-          ...defaultMessage.data,
-          msgId: Math.random().toString(),
-        },
-      };
+    switch (messageType) {
+      case "emote-only":
+        message = {
+          ...defaultMessage,
+          data: {
+            ...defaultMessage.data,
+            tags: { ...defaultMessage.data.tags, "emote-only": "1" },
+            msgId: Math.random().toString(),
+            text: "<img src='https://static-cdn.jtvnw.net/emoticons/v1/25/1.0' srcset='https://static-cdn.jtvnw.net/emoticons/v1/25/1.0 1x, https://static-cdn.jtvnw.net/emoticons/v1/25/1.0 2x, https://static-cdn.jtvnw.net/emoticons/v1/25/3.0 4x' title='Kappa' class='emote'>",
+          },
+          renderedText:
+            "<img src='https://static-cdn.jtvnw.net/emoticons/v1/25/1.0' srcset='https://static-cdn.jtvnw.net/emoticons/v1/25/1.0 1x, https://static-cdn.jtvnw.net/emoticons/v1/25/1.0 2x, https://static-cdn.jtvnw.net/emoticons/v1/25/3.0 4x' title='Kappa' class='emote'>",
+        };
+        break;
+      case "mod":
+        message = {
+          ...defaultMessage,
+          data: {
+            ...defaultMessage.data,
+            msgId: Math.random().toString(),
+            badges: [
+              ...defaultMessage.data.badges,
+              {
+                type: "moderator",
+                description: "Moderator",
+                url: "moderator",
+                version: "1",
+              },
+            ],
+          },
+        };
+        break;
+      case "sub":
+        message = {
+          ...defaultMessage,
+          data: {
+            ...defaultMessage.data,
+            msgId: Math.random().toString(),
+            tags: { ...defaultMessage.data.tags, subscriber: "1" },
+            badges: [
+              ...defaultMessage.data.badges,
+              {
+                type: "subscriber",
+                description: "Subscriber",
+                url: "subscriber",
+                version: "1",
+              },
+            ],
+          },
+        };
+        break;
+      case "broadcaster":
+        message = {
+          ...defaultMessage,
+          data: {
+            ...defaultMessage.data,
+            msgId: Math.random().toString(),
+            badges: [
+              ...defaultMessage.data.badges,
+              {
+                type: "broadcaster",
+                description: "Broadcaster",
+                url: "broadcaster",
+                version: "1",
+              },
+            ],
+          },
+        };
+        break;
+      default:
+        message = {
+          ...defaultMessage,
+          data: {
+            ...defaultMessage.data,
+            msgId: Math.random().toString(),
+          },
+        };
     }
 
     window.dispatchEvent(
