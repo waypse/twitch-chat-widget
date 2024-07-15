@@ -38,15 +38,6 @@ const styles = {
   },
 };
 
-export const badgeUrls = {
-  moderator: "https://svgshare.com/i/17jb.svg",
-  broadcaster: "https://svgshare.com/i/17jc.svg",
-  subscriber: "https://svgshare.com/i/17ik.svg",
-  partner: "https://svgshare.com/i/17ko.svg",
-  vip: "https://svgshare.com/i/17kA.svg",
-  artist: "https://svgshare.com/i/17kz.svg",
-};
-
 export const pinUrls = {
   mod: "https://i.ibb.co/G2r41HC/modheart.png",
   sub: "https://i.ibb.co/HPbv8d1/subheart.png",

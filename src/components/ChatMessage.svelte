@@ -1,10 +1,11 @@
 <script>
-  import {
-    getStyles,
-    getUserTypes,
-    badgeUrls,
-    pinUrls,
-  } from "../lib/chatStyles";
+  import { getStyles, getUserTypes, pinUrls } from "../lib/chatStyles";
+  import Moderator from "../components/icons/Moderator.svelte";
+  import Broadcaster from "../components/icons/Broadcaster.svelte";
+  import Subscriber from "../components/icons/Sub.svelte";
+  import Partner from "../components/icons/Partner.svelte";
+  import Vip from "../components/icons/Vip.svelte";
+  import Artist from "../components/icons/Artist.svelte";
 
   export let message;
 
@@ -22,6 +23,15 @@
 
   const emoteOnly = data.tags["emote-only"] === "1";
 
+  const badgeUrls = {
+    moderator: Moderator,
+    broadcaster: Broadcaster,
+    vip: Vip,
+    partner: Partner,
+    artist: Artist,
+    subscriber: Subscriber,
+  };
+
   // Twitch has a ton of badges, we don't want to show all of them, so we filter them out
   const filteredBadges = data.badges.filter((badge) =>
     Object.keys(badgeUrls).includes(badge.type)
@@ -33,7 +43,10 @@
     <span>@{data.displayName}</span>
     <div class="badges">
       {#each filteredBadges as badge}
-        <img src={badgeUrls[badge.type]} alt={badge.description} />
+        <svelte:component
+          this={badgeUrls[badge.type]}
+          fill="var(--name-color)"
+        />
       {/each}
     </div>
   </div>
@@ -111,7 +124,7 @@
     gap: 12px;
   }
 
-  .badges img {
+  :global(.badges > *) {
     width: 15px;
     height: 15px;
   }
