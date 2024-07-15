@@ -1,11 +1,17 @@
+import modbg from "../assets/mod-bg.txt?raw";
+import broadcasterbg from "../assets/broadcaster-bg.txt?raw";
+import defaultbg from "../assets/default-bg.txt?raw";
+import subheart from "../assets/subheart.txt?raw";
+import modheart from "../assets/modheart.txt?raw";
+import badgestreamer from "../assets/badge-streamer.txt?raw";
+
 const styles = {
   broadcaster: {
     "--name-color": "var(--broadcaster-name)",
     "--message-bg": "var(--broadcaster-bg)",
     "--message-color": "var(--broadcaster-text)",
     "--message-border": "var(--broadcaster-border)",
-    "--message-image":
-      "url('https://i.ibb.co/tKPDmYn/bg-star-broadcaster.png')",
+    "--message-image": `url('${broadcasterbg}')`,
     "--side-bar": "var(--broadcaster-sidebar)",
     "--glow": "var(--broadcaster-glow)",
   },
@@ -14,7 +20,7 @@ const styles = {
     "--message-bg": "var(--mod-bg)",
     "--message-color": "var(--mod-text)",
     "--message-border": "var(--mod-border)",
-    "--message-image": "url('https://i.ibb.co/4ZHJs0t/bg-star-mod.png')",
+    "--message-image": `url('${modbg}')`,
     "--side-bar": "var(--mod-sidebar)",
     "--glow": "var(--mod-glow)",
   },
@@ -23,7 +29,7 @@ const styles = {
     "--message-bg": "var(--sub-bg)",
     "--message-color": "var(--sub-text)",
     "--message-border": "var(--sub-border)",
-    "--message-image": "url('https://i.ibb.co/CmfxfJ2/bg-star.png')",
+    "--message-image": `url('${defaultbg}')`,
     "--side-bar": "var(--sub-sidebar)",
     "--glow": "var(--sub-glow)",
   },
@@ -32,16 +38,16 @@ const styles = {
     "--message-bg": "var(--regular-bg)",
     "--message-color": "var(--regular-text)",
     "--message-border": "var(--regular-border)",
-    "--message-image": "url('https://i.ibb.co/CmfxfJ2/bg-star.png')",
+    "--message-image": `url('${defaultbg}')`,
     "--side-bar": "var(--regular-bg)",
     "--glow": "var(--regular-glow)",
   },
 };
 
 export const pinUrls = {
-  mod: "https://i.ibb.co/G2r41HC/modheart.png",
-  sub: "https://i.ibb.co/HPbv8d1/subheart.png",
-  broadcaster: "https://i.ibb.co/QdfHVQq/badge-streamer.png",
+  mod: modheart,
+  sub: subheart,
+  broadcaster: badgestreamer,
 };
 
 export const getUserTypes = (data) => {
