@@ -1,9 +1,9 @@
-import modbg from "../assets/mod-bg.txt?raw";
-import broadcasterbg from "../assets/broadcaster-bg.txt?raw";
-import defaultbg from "../assets/default-bg.txt?raw";
-import subheart from "../assets/subheart.txt?raw";
-import modheart from "../assets/modheart.txt?raw";
-import badgestreamer from "../assets/badge-streamer.txt?raw";
+import mod_bg from "../assets/mod-bg.txt?raw";
+import broadcaster_bg from "../assets/broadcaster-bg.txt?raw";
+import default_bg from "../assets/default-bg.txt?raw";
+import sub_heart from "../assets/subheart.txt?raw";
+import mod_heart from "../assets/modheart.txt?raw";
+import badge_streamer from "../assets/badge-streamer.txt?raw";
 
 const styles = {
   broadcaster: {
@@ -11,7 +11,7 @@ const styles = {
     "--message-bg": "var(--broadcaster-bg)",
     "--message-color": "var(--broadcaster-text)",
     "--message-border": "var(--broadcaster-border)",
-    "--message-image": `url('${broadcasterbg}')`,
+    "--message-image": `url('${broadcaster_bg}')`,
     "--side-bar": "var(--broadcaster-sidebar)",
     "--glow": "var(--broadcaster-glow)",
   },
@@ -20,7 +20,7 @@ const styles = {
     "--message-bg": "var(--mod-bg)",
     "--message-color": "var(--mod-text)",
     "--message-border": "var(--mod-border)",
-    "--message-image": `url('${modbg}')`,
+    "--message-image": `url('${mod_bg}')`,
     "--side-bar": "var(--mod-sidebar)",
     "--glow": "var(--mod-glow)",
   },
@@ -29,7 +29,7 @@ const styles = {
     "--message-bg": "var(--sub-bg)",
     "--message-color": "var(--sub-text)",
     "--message-border": "var(--sub-border)",
-    "--message-image": `url('${defaultbg}')`,
+    "--message-image": `url('${default_bg}')`,
     "--side-bar": "var(--sub-sidebar)",
     "--glow": "var(--sub-glow)",
   },
@@ -38,18 +38,22 @@ const styles = {
     "--message-bg": "var(--regular-bg)",
     "--message-color": "var(--regular-text)",
     "--message-border": "var(--regular-border)",
-    "--message-image": `url('${defaultbg}')`,
+    "--message-image": `url('${default_bg}')`,
     "--side-bar": "var(--regular-bg)",
     "--glow": "var(--regular-glow)",
   },
 };
 
 export const pinUrls = {
-  mod: modheart,
-  sub: subheart,
-  broadcaster: badgestreamer,
+  mod: mod_heart,
+  sub: sub_heart,
+  broadcaster: badge_streamer,
 };
 
+/**
+ *
+ * @param {Partial<import('./types').ChatMessageData>} data
+ */
 export const getUserTypes = (data) => {
   /** @type {boolean} */
   const isBroadcaster = data.badges.some(
@@ -66,10 +70,13 @@ export const getUserTypes = (data) => {
   };
 };
 
+/**
+ * @param {Partial<import('./types').ChatMessageData>} data
+ */
 export const getStyles = (data) => {
   const { isBroadcaster, isMod, isSub } = getUserTypes(data);
 
-  const res = isBroadcaster
+  const currentStyleByUser = isBroadcaster
     ? styles.broadcaster
     : isMod
     ? styles.mod
@@ -77,7 +84,7 @@ export const getStyles = (data) => {
     ? styles.subscriber
     : styles.regular;
 
-  return Object.entries(res).reduce(
+  return Object.entries(currentStyleByUser).reduce(
     (acc, [key, value]) => `${acc}${key}: ${value};`,
     ""
   );

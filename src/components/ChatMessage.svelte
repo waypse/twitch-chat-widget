@@ -23,7 +23,7 @@
 
   const emoteOnly = data.tags["emote-only"] === "1";
 
-  const badgeUrls = {
+  const badgeComponents = {
     moderator: Moderator,
     broadcaster: Broadcaster,
     vip: Vip,
@@ -34,7 +34,7 @@
 
   // Twitch has a ton of badges, we don't want to show all of them, so we filter them out
   const filteredBadges = data.badges.filter((badge) =>
-    Object.keys(badgeUrls).includes(badge.type)
+    Object.keys(badgeComponents).includes(badge.type)
   );
 </script>
 
@@ -44,7 +44,7 @@
     <div class="badges">
       {#each filteredBadges as badge}
         <svelte:component
-          this={badgeUrls[badge.type]}
+          this={badgeComponents[badge.type]}
           fill="var(--name-color)"
         />
       {/each}

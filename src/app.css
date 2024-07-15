@@ -9,6 +9,7 @@ body {
   letter-spacing: 0.5px;
 
   --pastel-yellow: #ffd780;
+  --yellow-alpha: rgba(255, 215, 128, 0.2);
   --caca-brown: #6c472a;
   --dark-brown: #52341c;
 
@@ -17,8 +18,10 @@ body {
   --pale-salmon: #ffcdbe;
 
   --goku-red: #722913;
+  --red-alpha: rgba(255, 176, 153, 0.2);
   --white: #fffffe;
   --dark: #352722;
+  --gray-alpha: rgba(168, 134, 122, 0.2);
 
   --pink-white: #e1cac2;
   --beige: #a8867a;
@@ -29,26 +32,26 @@ body {
   --broadcaster-text: var(--dark-brown);
   --broadcaster-sidebar: var(--caca-brown);
   --broadcaster-border: var(--dark-brown);
-  --broadcaster-glow: 0 0 30px 5px rgba(255, 215, 128, 0.2);
+  --broadcaster-glow: 0 0 30px 5px var(--yellow-alpha);
 
   --mod-name: var(--light-salmon);
   --mod-text: var(--pale-salmon);
   --mod-bg: var(--goku-red);
   --mod-sidebar: var(--dark-salmon);
   --mod-border: var(--dark-salmon);
-  --mod-glow: 0 0 30px 5px rgba(255, 176, 153, 0.2);
+  --mod-glow: 0 0 30px 5px var(--red-alpha);
 
   --sub-name: var(--cream);
   --sub-text: var(--cream);
   --sub-bg: var(--dark);
   --sub-border: var(--pastel-yellow);
   --sub-sidebar: var(--pastel-yellow);
-  --sub-glow: 0 0 30px 5px rgba(255, 215, 128, 0.2);
+  --sub-glow: 0 0 30px 5px var(--yellow-alpha);
 
   --regular-name: var(--pink-white);
   --regular-text: var(--pink-white);
   --regular-bg: var(--dark);
   --regular-border: var(--beige);
   --regular-sidebar: var(--beige);
-  --regular-glow: 0 0 30px 5px rgba(168, 134, 122, 0.2);
+  --regular-glow: 0 0 30px 5px var(--gray-alpha);
 }

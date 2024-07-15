@@ -1,7 +1,8 @@
 <script>
   import { flip } from "svelte/animate";
   import { fly } from "svelte/transition";
-  import { messages, addMessage, sendAlert } from "./lib/stores/chat";
+  import { addMessage, sendAlert } from "./lib/event";
+  import messages from "./lib/chat";
   import ChatMessage from "./components/ChatMessage.svelte";
 
   const rand = () => {
@@ -12,6 +13,10 @@
     // @ts-ignore
     const { listener, event } = obj.detail;
 
+    // needed because alerts and messages don't have the same structure
+    // therefore some don't have a msgId
+    // so we need to generate a unique key for each message
+    // to avoid svelte's key collision
     const token = rand() + rand(); // to make sure the key is unique
 
     if (listener === "subscriber-latest") {
@@ -35,6 +40,7 @@
     }
   });
 
+  // Remove unnecessary messages
   $: $messages.length >= 20 && $messages.pop() && ($messages = $messages);
 </script>
 
