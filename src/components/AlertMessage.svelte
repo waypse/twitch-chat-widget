@@ -1,8 +1,6 @@
 <script>
-  import { fly } from "svelte/transition";
+  export let message;
 </script>
-
-<div></div>
 
 <style>
 </style>

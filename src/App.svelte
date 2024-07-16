@@ -4,6 +4,7 @@
   import { addMessage, sendAlert } from "./lib/event";
   import messages from "./lib/chat";
   import ChatMessage from "./components/ChatMessage.svelte";
+  import AlertMessage from "./components/AlertMessage.svelte";
 
   const rand = () => {
     return Math.random().toString(36).substr(2); // remove `0.`
@@ -59,9 +60,7 @@
   {#each $messages as message (message.token)}
     <div animate:flip={{ duration: 200 }} in:fly={{ x: 100, duration: 200 }}>
       {#if message.messageType === "alert"}
-        <div class="debug">
-          <pre>{JSON.stringify(message, null, 2)}</pre>
-        </div>
+        <AlertMessage {message} />
       {:else}
         <ChatMessage {message} />
       {/if}
@@ -96,11 +95,5 @@
     background-color: white;
     border: none;
     border-radius: 5px;
-  }
-
-  .debug {
-    background-color: white;
-    padding: 10px;
-    color: black;
   }
 </style>
